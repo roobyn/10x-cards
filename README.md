@@ -1,94 +1,62 @@
-# 10x Astro Starter
+# 10xCards
 
-A modern, opinionated starter template for building fast, accessible, and AI-friendly web applications.
+## Table of Contents
+- [Project description](#project-description)
+- [Tech stack](#tech-stack)
+- [Getting started locally](#getting-started-locally)
+- [Available scripts](#available-scripts)
+- [Project scope](#project-scope)
+- [Project status](#project-status)
+- [License](#license)
 
-## Tech Stack
+## Project description
+10xCards is a web-based flashcard assistant that accelerates spaced-repetition learning. Users paste long-form text (1,000–10,000 characters), have AI propose up to 20 cards with enforced field-length limits, review each suggestion for edits/approval/rejection, or build cards manually. The MVP prioritizes fast setup, AI-assisted and manual workflows, list management (search/sort/pagination), learning sessions powered by an external spaced-repetition library, and detailed logging for analytics. Planned boundaries include no mobile apps, password recovery, cross-account sharing, or imports beyond plain text.
 
-- [Astro](https://astro.build/) v5.5.5 - Modern web framework for building fast, content-focused websites
-- [React](https://react.dev/) v19.0.0 - UI library for building interactive components
-- [TypeScript](https://www.typescriptlang.org/) v5 - Type-safe JavaScript
-- [Tailwind CSS](https://tailwindcss.com/) v4.0.17 - Utility-first CSS framework
+## Tech stack
+- **Frontend:** Astro 5 with React 19 for interactive components, TypeScript 5, Tailwind 4, Shadcn/ui, `lucide-react`, `clsx`, `class-variance-authority`, `tailwind-merge`.
+- **Backend/infra:** Supabase for PostgreSQL storage, authentication, and logging; GitHub Actions + DigitalOcean for CI/CD and hosting.
+- **AI integration:** Openrouter.ai to reach OpenAI/Anthropic/Google models with configurable spending limits.
+- **Tools:** Node.js 22.14.0 (`.nvmrc`), Astro CLI, ESLint/Prettier with lint-staged and Husky hooks.
 
-## Prerequisites
+## Getting started locally
+1. **Prerequisites**
+   - Install [Node.js 22.14.0](https://nodejs.org/) (see `.nvmrc`).
+   - Ensure npm (or another compatible package manager) is available.
+   - Obtain Supabase credentials and Openrouter.ai API keys.
+2. **Clone and install**
+   ```bash
+   git clone <repository-url>
+   cd 10x-cards
+   npm install
+   ```
+3. **Configure the environment**
+   - Copy `.env.example` (if available) or create `.env`, supplying Supabase URL/keys, AI endpoint/token, and any other secrets required by the app.
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+   Astro will hot reload the project as you work on components.
 
-- Node.js v22.14.0 (as specified in `.nvmrc`)
-- npm (comes with Node.js)
+## Available scripts
+- `npm run dev` – start Astro in development mode.
+- `npm run build` – build the production bundle.
+- `npm run preview` – preview the production build locally.
+- `npm run astro` – proxy commands to the Astro CLI.
+- `npm run lint` – run ESLint over the codebase.
+- `npm run lint:fix` – run ESLint with automatic fixes.
+- `npm run format` – run Prettier over supported files.
 
-## Getting Started
+## Project scope
+- **AI generation:** Paste source text, specify up to 20 cards, validate text/card lengths, and submit normalized payload to AI. Review the generated proposals with edit/accept/reject controls.
+- **Manual creation/edit:** Build cards manually with 200-character front and 500-character back limits and edit details via the dedicated view, which also tracks metadata and history.
+- **List management:** Browse every card with search/filtering on front/back fields, sorting by creation/modification date, pagination, and bulk deletion. Listing links to detail views for edits.
+- **Learning sessions:** Choose card sets (all, filtered, status-based), hand off to an external spaced-repetition library, display current card + remaining count, and provide rating buttons/navigational controls with logging of each session outcome.
+- **Logging & analytics:** Record all accept/reject/create/edit events with user ID, source (AI/manual), timestamps, and source text to support manual SQL-based reporting.
+- **Boundaries:** MVP avoids mobile apps, password resets/recovery, cross-account sharing, advanced AI moderation, and imports beyond plain text.
 
-1. Clone the repository:
-
-```bash
-git clone https://github.com/przeprogramowani/10x-astro-starter.git
-cd 10x-astro-starter
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Run the development server:
-
-```bash
-npm run dev
-```
-
-4. Build for production:
-
-```bash
-npm run build
-```
-
-## Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run lint:fix` - Fix ESLint issues
-
-## Project Structure
-
-```md
-.
-├── src/
-│   ├── layouts/    # Astro layouts
-│   ├── pages/      # Astro pages
-│   │   └── api/    # API endpoints
-│   ├── components/ # UI components (Astro & React)
-│   └── assets/     # Static assets
-├── public/         # Public assets
-```
-
-## AI Development Support
-
-This project is configured with AI development tools to enhance the development experience, providing guidelines for:
-
-- Project structure
-- Coding practices
-- Frontend development
-- Styling with Tailwind
-- Accessibility best practices
-- Astro and React guidelines
-
-### Cursor IDE
-
-The project includes AI rules in `.cursor/rules/` directory that help Cursor IDE understand the project structure and provide better code suggestions.
-
-### GitHub Copilot
-
-AI instructions for GitHub Copilot are available in `.github/copilot-instructions.md`
-
-### Windsurf
-
-The `.windsurfrules` file contains AI configuration for Windsurf.
-
-## Contributing
-
-Please follow the AI guidelines and coding practices defined in the AI configuration files when contributing to this project.
+## Project status
+- **MVP focus:** Deliver an AI-assisted flashcard generator plus curation/reporting workflows for students, professionals, and language learners.
+- **Success metrics:** ≥75% of AI-generated cards accepted, ≥75% of new cards created via AI, average generation time <5 minutes, ≥80% of sessions marked complete (including interrupted ones). Logs capture acceptance/source data and session evaluations.
 
 ## License
-
-MIT
+Not specified yet (TBD). Replace with the desired license when ready.
